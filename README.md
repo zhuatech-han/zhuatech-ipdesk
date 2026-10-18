@@ -152,7 +152,7 @@ git diff --check
 实际 MySQL 全流程验收必须使用**新建独立测试实例**（包含测试写入，不可对业务库运行）：
 
 ```bash
-docker compose -p ipdesk-test up --build -d --wait --wait-timeout 900
+SCHEDULER_ENABLED=false docker compose -p ipdesk-test up --build -d --wait --wait-timeout 900
 python3 scripts/smoke.py --env-file .env --private-state /tmp/ipdesk-test-state.json
 docker compose -p ipdesk-test down -v --remove-orphans
 ```

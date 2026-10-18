@@ -141,7 +141,7 @@ git diff --check
 Use a **new isolated database**, never a business instance, for the writing HTTP test:
 
 ```bash
-docker compose -p ipdesk-test up --build -d --wait --wait-timeout 900
+SCHEDULER_ENABLED=false docker compose -p ipdesk-test up --build -d --wait --wait-timeout 900
 python3 scripts/smoke.py --env-file .env --private-state /tmp/ipdesk-test-state.json
 docker compose -p ipdesk-test down -v --remove-orphans
 ```
